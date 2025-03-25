@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生成された質問</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 500px;
+            text-align: center;
+        }
+        h2, h3, h4 {
+            color: #333;
+        }
+        ul {
+            text-align: left;
+            padding: 0;
+            list-style: none;
+        }
+        li {
+            background: #e9ecef;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        form {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>面接で聞かれそうな質問</h2>
+        <ul>
+            {% for question in questions %}
+                <li>{{ question }}</li>
+            {% endfor %}
+        </ul>
+
+        <h3>音声出力が開始されました。質問を聞きながら答えてみましょう！</h3>
+        
+        <!-- 録音開始ボタン -->
+        <form action="/record" method="POST">
+            <button type="submit">録音開始</button>
+        </form>
+
+        <!-- 録音停止ボタン -->
+        <form action="/record_end" method="POST">
+            <button type="submit">録音停止</button>
+        </form>
+
+        <!-- 面接終了ボタン（分析ページに遷移）-->
+        <h3>面接が終了したら、分析を確認しましょう。</h3>
+        <form action="/analyze" method="POST">
+            <button type="submit">面接終了・フィードバックを見る</button>
+        </form>
+    </div>
+</body>
+</html>
+

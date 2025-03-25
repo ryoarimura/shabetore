@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>就活質問生成アプリ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 400px;
+            text-align: center;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin: 10px 0 5px;
+            text-align: left;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>しゃべトレ</h2>
+        <form action="/generate" method="POST">
+            <label for="name">名前:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="company">志望企業:</label>
+            <input type="text" id="company" name="company" required>
+
+            <label for="gakuchika">ガクチカ（学生時代に力を入れたこと）:</label>
+            <textarea id="gakuchika" name="gakuchika" rows="4" required></textarea>
+
+            <label for="axis">就活の軸:</label>
+            <textarea id="axis" name="axis" rows="4" required></textarea>
+
+            <button type="submit">質問を生成</button>
+        </form>
+    </div>
+</body>
+</html>
+

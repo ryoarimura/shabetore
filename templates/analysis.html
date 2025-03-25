@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>面接フィードバック</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+            overflow-y: auto;
+            max-height: 90vh;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        h3 {
+            color: #007BFF;
+            margin-top: 15px;
+        }
+        .feedback-section {
+            background: #e9ecef;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            text-align: left;
+        }
+        .feedback-section div {
+            padding: 5px;
+            border-bottom: 1px solid #ddd;
+        }
+        .feedback-section div:last-child {
+            border-bottom: none;
+        }
+        .button {
+            display: block;
+            background-color: #007BFF;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>面接フィードバック</h1>
+        {% for feedback in feedbacks %}
+        <div class="feedback-section">
+            <h3>質問内容</h3>
+            <div>{{ Q[loop.index0] }}</div>
+            <h3>回答</h3>
+            <div>{{ A[loop.index0] }}</div>
+            <h3>フィードバック</h3>
+            <div>{{ feedback|safe }}</div>
+        </div>
+        {% endfor %}
+        <a href="{{ url_for('index') }}" class="button">ホームに戻る</a>
+    </div>
+</body>
+</html>
